@@ -1,0 +1,94 @@
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --ink: #12192b;
+  --muted: #5b6477;
+  --border: #dde1e8;
+  --primary: #0f5f63;
+  --primary-hover: #0b4a4d;
+  --primary-soft: #e6f1f1;
+  --error: #b42318;
+  --radius: 10px;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.55;
+}
+
+.container { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+.site-header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 22px 0; }
+.header-inner { display: flex; align-items: center; gap: 16px; }
+.logo { height: 48px; width: auto; max-width: 140px; object-fit: contain; flex-shrink: 0; }
+h1 { margin: 0; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; }
+.tagline { margin: 2px 0 0; color: var(--muted); font-size: 0.95rem; }
+
+main { flex: 1; padding-top: 36px; padding-bottom: 36px; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 1px 2px rgba(18,25,43,.04), 0 8px 24px rgba(18,25,43,.05); overflow: hidden; }
+
+.tabs { display: flex; border-bottom: 1px solid var(--border); }
+.tab { flex: 1; padding: 16px; background: none; border: 0; border-bottom: 2px solid transparent; font: 600 1rem var(--sans); color: var(--muted); cursor: pointer; transition: color .15s, border-color .15s, background .15s; }
+.tab:hover { color: var(--ink); background: #fafbfc; }
+.tab.is-active { color: var(--primary); border-bottom-color: var(--primary); }
+
+.panel { padding: 28px; }
+
+label { display: block; font-weight: 600; font-size: .9rem; margin-bottom: 8px; }
+
+textarea, input {
+  width: 100%;
+  font: 1rem var(--sans);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  transition: border-color .15s, box-shadow .15s;
+}
+textarea { resize: vertical; min-height: 140px; }
+textarea:focus, input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
+
+.row { display: flex; align-items: flex-end; gap: 16px; margin-top: 18px; }
+.field-shift { width: 140px; }
+
+.btn { font: 600 .95rem var(--sans); border-radius: 8px; padding: 12px 20px; min-height: 46px; cursor: pointer; border: 1px solid transparent; transition: background .15s, border-color .15s; }
+.btn-primary { background: var(--primary); color: #fff; flex: 1; }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-ghost { background: var(--surface); border-color: var(--border); color: var(--ink); padding: 8px 14px; min-height: 38px; font-size: .875rem; }
+.btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+
+button:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+
+.error { color: var(--error); font-size: .9rem; margin: 12px 0 0; min-height: 1.2em; }
+.error:empty { margin: 0; min-height: 0; }
+
+.result { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+.result-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.result h2 { margin: 0; font-size: 1rem; }
+.result-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.output { margin: 0; padding: 16px; background: var(--primary-soft); border: 1px solid #cfe3e3; border-radius: 8px; font-family: var(--mono); font-size: .95rem; white-space: pre-wrap; word-break: break-word; }
+
+.note { margin: 20px 4px 0; color: var(--muted); font-size: .85rem; }
+
+.site-footer { border-top: 1px solid var(--border); background: var(--surface); padding: 18px 0; color: var(--muted); font-size: .85rem; text-align: center; }
+
+@media (max-width: 560px) {
+  .panel { padding: 20px; }
+  .row { flex-direction: column; align-items: stretch; }
+  .field-shift { width: 100%; }
+  .logo { height: 40px; }
+  h1 { font-size: 1.2rem; }
+  .result-actions, .result-actions .btn { width: 100%; }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Salshi Secret Message — Caesar Cipher Utility</title>
+  <meta name="description" content="Encrypt and decrypt messages with a simple Caesar-style character shift. A Salshi utility." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <img class="logo" src="assets/salshi-logo.png" alt="Salshi logo" />
+      <div>
+        <h1>Salshi Secret Message</h1>
+        <p class="tagline">Secure your messages with a simple character-shift cipher.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="tabs" role="tablist" aria-label="Choose mode">
+        <button class="tab is-active" role="tab" id="tab-encrypt" data-mode="encrypt" aria-selected="true" aria-controls="panel-encrypt">Encrypt</button>
+        <button class="tab" role="tab" id="tab-decrypt" data-mode="decrypt" aria-selected="false" aria-controls="panel-decrypt" tabindex="-1">Decrypt</button>
+      </div>
+
+      <div class="panel" id="panel-encrypt" role="tabpanel" aria-labelledby="tab-encrypt">
+        <form id="encrypt-form" novalidate>
+          <label for="encrypt-message">Enter your message</label>
+          <textarea id="encrypt-message" rows="6" placeholder="Type or paste your message here..."></textarea>
+          <div class="row">
+            <div class="field-shift">
+              <label for="encrypt-shift">Shift amount</label>
+              <input id="encrypt-shift" type="number" inputmode="numeric" step="1" value="3" />
+            </div>
+            <button type="submit" class="btn btn-primary">Encrypt Message</button>
+          </div>
+          <p class="error" id="encrypt-error" role="alert"></p>
+        </form>
+        <div class="result" id="encrypt-result" hidden>
+          <div class="result-head">
+            <h2>Encrypted Message</h2>
+            <div class="result-actions">
+              <button type="button" class="btn btn-ghost" data-copy="encrypt-output">Copy</button>
+              <button type="button" class="btn btn-ghost" id="send-to-decrypt">Decrypt this message →</button>
+            </div>
+          </div>
+          <pre class="output" id="encrypt-output" aria-live="polite"></pre>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-decrypt" role="tabpanel" aria-labelledby="tab-decrypt" hidden>
+        <form id="decrypt-form" novalidate>
+          <label for="decrypt-message">Enter encrypted message</label>
+          <textarea id="decrypt-message" rows="6" placeholder="Paste your encrypted message here..."></textarea>
+          <div class="row">
+            <div class="field-shift">
+              <label for="decrypt-shift">Shift amount</label>
+              <input id="decrypt-shift" type="number" inputmode="numeric" step="1" value="3" />
+            </div>
+            <button type="submit" class="btn btn-primary">Decrypt Message</button>
+          </div>
+          <p class="error" id="decrypt-error" role="alert"></p>
+        </form>
+        <div class="result" id="decrypt-result" hidden>
+          <div class="result-head">
+            <h2>Decrypted Message</h2>
+            <div class="result-actions">
+              <button type="button" class="btn btn-ghost" data-copy="decrypt-output">Copy</button>
+            </div>
+          </div>
+          <pre class="output" id="decrypt-output" aria-live="polite"></pre>
+        </div>
+      </div>
+    </section>
+
+    <p class="note">Note: This tool uses a simple Caesar-style cipher for learning and basic message transformation. It is not intended for protecting sensitive information.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">&copy; 2026 Salshi &mdash; Turning Ideas into AI-Powered Digital Solutions.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
